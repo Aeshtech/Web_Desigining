@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iframe</title>
+</head>
+<body>
+    <h1>Iframe introduction:</h1>
+    <!-- <iframe> tag specifies an inline frame! -->
+    <!-- An inline frame is used to embed another documents within the current Html document. -->
+    <strong>Iframe 1(Without any restrictions):</strong>
+    <iframe src="form&input.html" height="500" width="350">
+        <p>
+            Your browser doesn't support iframe
+        </p>
+    </iframe>
+
+    <!-- Sandbox attribute without any value apply all restrictions to the iframe such as block-submit,block-popup,block-model
+        block-autoplay music and videos etc... -->
+    <strong>Iframe 2(With sandbox restriction):</strong>
+    <iframe src="form&input.html" height="500" width="350" sandbox>
+        <p>
+            Your browser doesn't support iframe
+        </p>
+    </iframe>
+    
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form and input</title>
+</head>
+<body>
+<h1>Enggcolony</h1>
+<!-- height and width att used on type image only! -->
+<input type="image" src="aeshtech.png.png" height="250" width="250"  alt="server err:">
+<br><br>
+<!-- Form  -->
+<strong>Form 1:</strong>
+<form  action="server.php" method="GET" autocomplete="off"><br>
+        <!--fieldset tag used to give boundry to all elements related to that form! -->
+        <fieldset> 
+            <legend>Fill your details</legend>
+            <label for="fname" >First name:</label>
+            <!-- autocomplete attribute fill the input text automatically if its on but its generally depends on browser autofill setting!  -->
+            <input type="text" name="fname" id="fname" autocomplete="on" nextline><br><br>
+            <label for="lname">Last name:</label>
+            <!-- autofocus attribute only focus the input when the page load on which input it used! -->
+            <input type="text" name="lname" id="lname" autocomplete="on" autofocus ><br><br>
+            <label for="email">Email id:</label>
+            <input type="email" autocomplete="off" name="email" id="email"  ><br><br>
+            <input type="submit" value="submit"><br>
+        </fieldset>
+<!-- Text area tag -->
+<br>
+<br>
+<h3>Text area:</h3>
+<label for="random"></label>
+<textarea id="random" rows="16" cols="60">
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla sit odit fugit qui reprehenderit dolorem molestiae harum illum saepe, soluta placeat numquam. Aperiam quae assumenda aliquam iusto laudantium praesentium expedita!
+Saepe ipsam molestiae accusamus eos numquam eveniet nam perspiciatis facere ipsum eum sunt minus animi, libero, aliquid tempora velit veritatis delectus cumque repellat dolores fuga. 
+</textarea>
+
+<!-- input attributes -->
+<br><br>
+<h3>Input atrributes:</h3><br>
+<form action="second.php" method="get">
+    <label for="img">Accept image only:
+        <input type="file" accept=".jpeg" id="img" >
+    </label>
+</form><br>
+
+ <br>
+
+<!-- checkbox attribute is used take input....it can take multiple inputs! -->
+<form action="third.php" method="get">
+    <h4>Q-1. Enter about what you have</h4>
+    <input type="checkbox" id="v1">
+    <label for="v1">Fortuner</label><br>
+    <input type="checkbox" id="v2">
+    <label for="v2">BMW</label><br>
+    <input type="checkbox" id="v3">
+    <label for="v3">Audi</label><br>
+    <input type="checkbox" id="v4">
+    <label for="v4">Thar</label>
+</form><br>
+<!-- Radio attribute is used take input....but it can take only one input among all options! -->
+<form action="fourth.php" method="get">
+    <h4>Q-2. Enter the size of your Heart:</h4>
+    <input type="radio" id="small" name="Dick" value="small">
+    <label for="small">Small</label><br>
+    <input type="radio" id="med" name="Dick" value="Medium">
+    <label for="med">Medium</label><br>
+    <input type="radio" id="lrg" name="Dick" value="Large">
+    <label for="lrg">Large</label><br>
+    <s>your name:</s>(disabled to take any input)
+    <input type="text" disabled><br> 
+    <input type="checkbox" checked value="eligble">I am eligible to give this answer.
+</form>    
+<br><br>
+<!-- maxlength specifies the maximum number of character allowed in an <input> tag! -->
+<strong>Form 2:</strong>
+<form action="xyz.php" method="get">
+    <fieldset>
+        <legend>Enter details :</legend>
+        <p>Usernme(maxlength 10 characters only):</p><br>
+        <input type="text" name="usernme" maxlength="10">
+        <!-- max and min attr used to limit the input value  for the types-- number,date,datetime,month,time,week! -->
+        <p>Enter the quantity of your pages required between 0 and 30 </p>
+        <input type="number" name="quantity" min="0" max="30" >
+        <strong>Enter your birthdate to participate(Not allowed before 1999-12-31 and after 2012-12-31):</strong>
+        <input type="date" name="birthdate" min="1999-12-31" max="2012-12-31" >
+        <!-- multiple attr is used when we want to take multiple inputs only for type email and file -->
+        <p>Enter multiple images(tip-by hold ctrl or shift u can select multiple images):</p>
+        <input type="file" name="image" multiple>
+        <input type="submit" value="submit">
+    </fieldset>
+   
+</form><br><br>
+<strong>Form 3:</strong>
+<form action="xyz2.php" method="get">
+    <fieldset>
+        <legend>Enter deatails:</legend>
+        <p>Enter your user id :</p><br>
+        <!-- pattern attr is used to take input in desired pattern & placeholder is to specify input by giving short hint in input area -->
+        <input type="text" name="userid" pattern="[a-z]{0,7}" placeholder="Username" 
+        title="Username should only contain lowercase letter & must be less than 8 in length!" >
+        <input type="submit">
+    </fieldset>
+</form><br>
+
+<strong>Form:4</strong>
+<form action="xyz3.php" method="GET">
+    <fieldset>
+        <legend>Enter details:</legend>
+        <!-- "required" attr is used when input is mandatory & "size" attr is used to give size to input area!  -->
+        <input type="email" name="email" placeholder="Email id" size="30" required><br><br>
+        <!-- readonly attr is used to show info in input area (by passing in value)! -->
+        country:<input type="text" name="country(readonly)" value="India" readonly><br><br>
+        <!-- "step" attr is used to take legal interval in input by passing step value in numbers! -->
+         <p>Enter your desired bonus in interval of 2</p>
+        <input type="number" name="bonus" step="2" placeholder="bonus" min="0" max="50"><br><br>
+        <input type="submit">
+        <input type="reset">
+    </fieldset>
+</form><br><br>
+<strong>Form 5:</strong>
+<!-- "form" attribute is used in the input to specifies the <input> element belong to which <form> element, by passing that
+     form id in its value. So it can work even the <input> elem is out of <form> elem. -->
+<form action="xyz4.php" method="GET" id=form5 >
+    <fieldset>
+        <legend>Enter details</legend>
+        first name:<input type="text" name="fname" required><br>
+        <input type="submit" value="submit"><br>
+        <p>The "Last name" field below is outside the form element, but still part of this form.</p>
+    </fieldset>
+</form><br>
+Last name:<input type="text" name="lname" form="form5" required><br><br>
+<!-- button have three type i.e, "button"(only clickable),"submit","reset" -->
+<strong>Form 6:</strong>
+<form action="spl.php" method="get" form="form6">
+    <fieldset>
+        <legend>Enter details:</legend>
+        First name:<input type="text" name="fname" placeholder="first name" required><br>
+        Last name:<input type="tex" name="lname" placeholder="last name" required><br>
+        <button type="submit"  >submit</button>
+        <button type="submit" formaction="second.php">Submit to another page</button>
+    </fieldset>
+</form><br><br>
+<!-- <Select> element is used to create a drop-down list -->
+<!-- <option> element is used to define the available options in the list -->
+<!-- <optgroup> element is used to group related opions in a drop-down list! -->
+<strong>Select any one:</strong><br>
+<select required>
+    <optgroup label="Swedeshi">
+        <option value="p.dantkanti">Patanajali Dantkanti</option>
+        <option value="p.soap">Patanjali soap</option>
+        <option value="p.alovera">Patanjali Alovera</option>
+    </optgroup>
+    <optgroup label="Videshi">
+        <option value="toothpaste">Dabur Red </option>
+        <option value="soap">Dettol</option>
+        <option value="facewash">Himalya</option>
+    </optgroup>
+</select><br><br>
+<strong>You can select multiple options by hold ctrl:</strong>
+<form action="doit.php">
+    <select name="products" multiple required>
+        <optgroup label="Swedeshi">
+            <option value="p.dantkanti">Patanajali Dantkanti</option>
+            <option value="p.soap">Patanjali soap</option>
+            <option value="p.alovera">Patanjali Alovera</option>
+        </optgroup>
+        <optgroup label="Videshi">
+            <option value="toothpaste">Dabur Red </option>
+            <option value="soap">Dettol</option>
+            <option value="facewash">Himalya</option>
+    </select>
+    <input type="submit">
+</form><br><br>
+
+<!-- <datalist> tag specifies the pre-defined options for an <input> element -->
+<strong>Input your favourite browser: </strong>
+<form action="dsf.php" method="get">
+    <input list="browser">
+    <datalist id="browser">
+        <option value="Internet Explorer"></option>
+        <option value="Chrome"></option>
+        <option value="Safari"></option>
+        <option value="Opera"></option>
+        <option value="Firefox"></option>
+    </datalist>
+    <input type="submit">
+</form><br><br>
+
+<!-- <output> tag represents the calculation(like one performed by script) -->
+<form oninput="x.value=parseInt(a.value)+parseInt(b.value)">
+    <strong>Drag upto marks you geted in theory:</strong><br>
+    <p> Internal fixed(30):</p>
+    0<input type="range" id="a" value="30" max="70">70<br>
+    +<input type="number" id="b" value="30">
+    <output name="x" for="a b"></output>
+    <input type="submit">
+
+
+</form>
+<h1> Thank You!</h1>
+</body>
+</html>

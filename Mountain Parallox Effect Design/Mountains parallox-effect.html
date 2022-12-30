@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Parallax Scrolling with Javascript</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <section class="zoom">
+        <img src="text.png" id="text">
+        <img src="mountain1.png" id="layer1">        
+        <img src="mountain2.png" id="layer2">                   
+    </section>
+    <section class="content">
+        <h2>Simple Background Parallax Using Javascript</h2>
+        <p>Lorem ipsum dolor sit amet,consectetur adpisicing elit, sed do eiusmod tempor incident ut labore et dolore Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam asperiores consequatur id quia nihil! Sequi inventore laudantium soluta provident minima recusandae ab perferendis, nobis nam quod, reiciendis, excepturi voluptatum? Consequuntur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa eligendi perspiciatis tempora officiis quod adipisci animi aut iusto consectetur fugit. Consectetur vitae numquam eum. Distinctio quibusdam alias adipisci animi minus. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt excepturi eligendi aliquid qui iure, impedit hic? Rem aspernatur quibusdam laudantium doloribus suscipit earum qui. Incidunt voluptas assumenda ipsam eaque tempore?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.<br>
+        Fugit reprehenderit placeat sint porro culpa? Vel iusto explicabo ex est obcaecati, quisquam similique aspernatur quis earum molestiae eos itaque. Quasi, reiciendis! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima necessitatibus hic, enim totam earum iure deserunt at neque alias molestiae, culpa ducimus, dolores aut sapiente voluptates id consectetur perspiciatis suscipit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel eius cumque et molestias sed, consequuntur beatae at, labore vitae ducimus expedita corporis exercitationem iste tempore nobis deserunt. Voluptates, quisquam accusantium?Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse id, sequi obcaecati fugiat ab facilis non! Illum, sit quam exercitationem quaerat provident saepe numquam quisquam, autem eveniet animi quae sequi? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum tempora, quam minima ratione accusamus consectetur illum minus doloremque, eaque iusto adipisci. Culpa doloribus accusantium esse veritatis possimus qui corrupti corporis!</p>
+    </section>
+    <script type="text/javascript">
+    var layer1 = document.getElementById('layer1')
+    scroll =window.pageYOffset;
+    document.addEventListener('scroll' , function (e)
+    {
+        var offset = window.pageYOffset;
+        scroll = offset;
+        layer1.style.width = (100 + scroll/5) + '%';
+    });
+    var layer2 = document.getElementById('layer2')
+    scroll = window.pageYOffset;
+    document.addEventListener('scroll' , function (e)
+    {
+        var offset = window.pageYOffset;
+        scroll = offset;
+        layer2.style.width = (100 + scroll/5) +
+        '%';
+        layer2.style.left = scroll/50 + '%';
+    });
+    var text = document.getElementById('text')
+    scroll =window.pageYOffset;
+    document.addEventListener('scroll', function (e)
+    {
+        var offset = window.pageYOffset;
+        scroll = offset;
+        layer2.style.width = (100 + scroll/5) +
+        '%';
+        text.style.top = - scroll/20 + '%';
+    });
+    </script>
+    
+</body>
+</html>

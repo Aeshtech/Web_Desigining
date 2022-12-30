@@ -1,0 +1,72 @@
+<!doctype>
+<html
+<head>
+<title>Engineer's Colony</title>
+</head>
+<Body>
+<h1>Welcome to Enggcolony.com</h1>
+<strong>Image attributes:</strong><br><br>
+<strong>Image with caption:</strong><br>
+<!-- <figure> tag is used to mark uo a photo in a document! -->
+    <figure>
+        <img src="aeshtech.png.png"  width="200" height="250" alt="Source error">
+        <!-- <figcaption> tag defines a caption for a <figure> element -->
+        <figcaption>Developer Ashish</figcaption>
+    </figure>
+<!-- "ismap" attributes is used to specify the image is server side image-map. On clicking the server-side image-map,
+the coordinates are sent to the server as a url query string!  -->
+<p>Server-side image:on click your clicking coordinates sent to server. </p>
+<a href="actionpage.php">
+    <img src="ashish.jpeg.jpeg" ismap alt="Server error" height="250" width="200"><br><br>
+</a><br>
+
+<!-- <map> tag is used to define the client-side image map. An image map is a image with clickable areas.-->
+<!-- "usemap" atrribute is associated with a <map> element's name attribute,and creates a relstionship b/w the <img> and the <map> -->
+<strong>You can click on diff area of the image to see in detail:</strong><br><br>
+<img src="space.jfif" usemap="#spacemap">
+<map name="spacemap">
+    <area  shape="rect" coords="2,1,81,165" alt="Server error" href="sun.jpg" >
+    <area shape="circle" coords="136,82,23" alt="server error" href="jupiter.jpg">
+    <area shape="circle" coords="219,82,22" alt="server error" href="saturn.jpg">
+    <area shape="circle" coords="279,82,9" alt="server error" href="Earth.jpg">
+</map><br><br>
+
+<strong>Picture(Responsive):</strong><br><br>
+<!-- <picture> element is responsive based on the viewport it contain two type of tags <source>(2 or more) & <img>(used when browser
+    doesn't support any of source!) -->
+<picture>
+    <!-- source tag is used to specifiy multiple media resources for media elements. The browser will take anyone of source which it can supp best. -->
+    <!-- "srcset attr specifies the url of the image to use in diff situations!" -->
+    <source media="(min-width:650px)" srcset="sun.jpg">
+    <source media="(min-width:465px)" srcset="saturn.jpg">
+    <img src="aeshtech.png.png" alt="error" style="width:auto">
+</picture><br><br>
+
+<!-- <svg> tag defines a container for SVG graphics. -->
+<strong>A circle drawn by SVG:</strong><br>
+<svg width="100" height="100">
+    <circle cx="50" cy="50" r="40" stroke="blue" stroke-width="4" fill="yellow" />
+    sorry your browser doesn't support inline SVG! 
+</svg><br><br>
+
+<!-- audio control tag is used to add audio with the help of source tag -->
+<strong>Audio and Video is here:</strong><br><br>
+<!-- <audio> contains diff attributes such as "controls" to provide control over the audio for user. "loop","autoplay","muted",
+    "preload" & "src" to specifies the url of the audio file.-->
+<audio controls >
+    <source src="Bol_Do_Na_Zara.mp3" type="audio/mpeg">
+    <source src="Bol_Do_Na_Zara.ogg" type="audio/mpeg">
+    Your browser doesn't support the audio element!
+</audio><br><br><br>
+
+<!-- <video> tag is used to specify video it has same attributes as audio tag & some addtional attributes for video are follows: -->
+<!-- "poster"-specify an image be shown while the video is downloading or until user hits the play button   -->
+<!-- "height" & "width" sets the height and width of the video player(which is not supp. in th <audio> tag). -->
+<video width="320" height="240" controls poster="Earth.jpg">
+    <source src="musafir.mp4" type="video/mp4">
+    <source src="musafir.ogg" type="video/ogg">
+    Your browser doesn't support the video tag!
+</video>
+
+</body>
+</html>

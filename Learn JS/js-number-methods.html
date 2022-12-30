@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Number Methods</h2>
+
+<p>The toString() method converts a number to a string.</p>
+
+<p id="demo"></p>
+
+<script>
+var x = 123;
+document.getElementById("demo").innerHTML = x.toString() + "<br>" +
+   (123).toString() + "<br>" +
+   (100 + 23).toString();
+y=x.toString();
+console.log(y);
+console.log(typeof y);
+
+num=123.321;
+p=num.toFixed(1); //this method returns a number to string with fixed decimal points
+console.log(p,typeof p);
+
+p=num.toPrecision(5);
+console.log(p,typeof p); //this method returns a number to string with fixed length.
+p=num.valueOf();
+console.log(p, typeof p);
+
+p=Number("100"); //converts js variables to numbers.
+console.log(p, typeof p);
+
+k=new Date("2020-07-09");
+console.log(k,typeof k);
+console.log(Number(k));
+
+i=parseInt("37.33");
+ // this method can return string of num into whole number. It can have spaces in b/w string but returns only first number.
+console.log(i);
+o=parseInt("30.33 years")
+console.log(o);
+
+f=parseFloat("15.551"); //can return string of number into decimal number.
+console.log(f);
+
+</script>
+
+</body>
+</html>

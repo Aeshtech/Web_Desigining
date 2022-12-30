@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+        }
+        *{
+            box-sizing: border-box;
+        }
+        .container{
+            position: relative;
+            border: 3px solid red;
+            display: flex;
+            max-width: 530px;
+            min-height: 500px;
+            top:100px;
+            margin: auto;
+        }
+
+        .images{
+            position: absolute;
+            width: 100%;
+        }
+        #img1{
+            display:inline-block;
+            margin: 0px;
+            width: 150px;
+            height: 150px;
+        }
+        #img2{
+            display:inline-block;
+            margin: 0px 0px 0px 216px;
+            width: 150px;
+            height: 150px;
+        }
+        #img3{
+            display:block;
+            margin-top:45px;
+            margin-left: 183px;
+            width: 150px;
+            height: 150px;
+        }
+        #img4{
+            display:inline-block;
+            margin:0px 0px 0px 0px;
+            width: 150px;
+            height: 150px;
+        }
+        #img5{
+            display:inline-block;
+            margin:0px 0px 0px 216px;
+            width: 150px;
+            height: 150px;
+        }
+
+        .rotate { 
+    animation: rotation 5s infinite linear;
+    margin: auto;
+    margin-top: initial;
+  } 
+  @keyframes rotation { from { transform: rotate(0deg); } to { transform: rotate(359deg); } }
+  
+  .rotate-rev { 
+    animation: rotation 5s linear infinite reverse  ;
+    margin: auto;
+    margin-top: initial;
+  } 
+  @keyframes rotation { from { transform: rotate(0deg); } to { transform: rotate(359deg); } }
+
+    </style>
+</head>
+<body>
+    <h1>An exercise to position images.</h1>
+    <div class="container">
+        <div class="images">
+            <img src="covid-virus.png" id="img1" class="rotate">
+            <img src="covid-virus.png" id="img2" class="rotate-rev">
+            <img src="covid-virus.png" id="img3">
+            <img src="covid-virus.png" id="img4" class="rotate">
+            <img src="covid-virus.png" id="img5" class="rotate-rev">
+        </div>
+    </div>
+</body>
+</html>

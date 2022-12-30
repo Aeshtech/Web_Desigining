@@ -1,0 +1,360 @@
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+  <title>Shoot</title> 
+  <style>
+        canvas {
+            background-color: #565656;
+        }
+    </style> 
+ </head> 
+ <body> 
+  <canvas id="canvas"></canvas> 
+  <script type="text/javascript">
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        const scoreLabel = document.createElement('div');
+
+        var cw, ch;
+        canvas.width = cw = window.innerWidth;
+        canvas.height = ch = window.innerHeight;
+
+
+
+        welcomePage();
+
+        function welcomePage() {
+            scoreLabel.innerHTML = "";
+            ctx.clearRect(0, 0, cw, ch);
+            ctx.fillStyle = 'rgba(253,112,19,1)';
+            ctx.font = '50px Microsoft Yahei';
+            ctx.textAlign = 'center';
+            ctx.fillText('Big Smile', cw / 2, ch / 2);
+            ctx.fillStyle = '#eeeeee';
+            ctx.font = '20px serif';
+            ctx.fillText('Tap to start', cw / 2, ch / 2 + 70);
+            canvas.addEventListener("click", init, false);
+        }
+
+        function addScore() {
+            scoreLabel.style.position = 'absolute';
+            scoreLabel.style.top = '5px';
+            scoreLabel.style.left = '0px';
+            scoreLabel.style.width = '100%';
+            scoreLabel.style.height = '40px';
+            scoreLabel.style.fontSize = '20px';
+            scoreLabel.style.fonWight = 'bold';
+            scoreLabel.style.color = '#ffffff';
+            scoreLabel.style.textShadow = '0px 0px 10px #aaaaaa';
+            scoreLabel.style.textAlign = 'center';
+            scoreLabel.style.verticalAlign = 'middle';
+            scoreLabel.style.lineHeight = '40px';
+            scoreLabel.innerHTML = 'Score : 0';
+            document.body.appendChild(scoreLabel);
+        }
+
+        function init() {
+
+            addScore();
+            canvas.removeEventListener("click", init, false);
+
+            var xDir = 0,
+                yDir = 0,
+                heroSpeed = 5,
+                enemySpeed = 3,
+                bulletSpeed = 7,
+                maxSpeed = 50,
+                score = 0;
+            var bullets = [],
+                enemies = [],
+                enemiesHit = [];
+
+            bullets.length = 0;
+            enemies.length = 0;
+            enemiesHit.length = 0;
+
+            var i = 0,
+                dy = 0,
+                globalRank = 0,
+                layTime = 2000;
+            var over = false;
+
+            function onClick() {
+
+            }
+
+            function onKeyDown(e) {
+                // var e = ( e.keyCode ? e.keyCode : e.which );
+                // console.log(e.keyCode);
+                if (e.keyCode == 65) {
+                    xDir = -1;
+                } else if (e.keyCode == 68) {
+                    xDir = 1;
+                } else if (e.keyCode == 87) {
+                    yDir = 1;
+                } else if (e.keyCode == 83) {
+                    yDir = -1;
+                }
+            }
+
+            function onKeyUp(e) {
+                // var e = ( e.keyCode ? e.keyCode : e.which );
+                if (e.keyCode == 65) {
+                    xDir = 0;
+                } else if (e.keyCode == 68) {
+                    xDir = 0;
+                } else if (e.keyCode == 87) {
+                    yDir = 0;
+                } else if (e.keyCode == 83) {
+                    yDir = 0;
+                }
+            }
+
+            function handleOrientation(event) {
+                //var dx = event.beta;
+                dy = event.gamma;
+            }
+
+            //canvas.addEventListener("click", onClick, false);
+            document.addEventListener("keydown", onKeyDown, false);
+            document.addEventListener("keyup", onKeyUp, false);
+            window.addEventListener("deviceorientation", handleOrientation);
+
+            /*
+            canvas.addEventListener("touchend",onTouchEnd,false);
+            */
+
+
+
+            /*============================================================
+            Hero
+            ============================================================*/
+            function Hero() {
+                this.x = cw / 2;
+                this.y = ch * 9 / 10;
+            }
+
+            Hero.prototype.upData = function() {
+                /*===========================================================
+                Check Collisions // 碰撞检测
+                ===========================================================*/
+                var ei = enemies.length;
+                while (ei--) {
+                    var enemy = enemies[ei];
+                    if (distance(this.x, this.y, enemy.x, enemy.y) <= enemy.r + 16) {
+                        over = true;
+                    }
+                }
+            }
+
+            Hero.prototype.render = function() {
+                ctx.save();
+                ctx.translate(this.x - 15, this.y);
+                ctx.fillStyle = "white";
+                ctx.fillRect(15, 0, 15, 15);
+                ctx.fillStyle = "#ee6633";
+                ctx.fillRect(0, 0, 15, 15);
+                ctx.restore();
+
+                ctx.save();
+                ctx.translate(this.x - 15, this.y - 15);
+                ctx.fillStyle = "white";
+                ctx.fillRect(0, 0, 15, 15);
+                ctx.fillStyle = "#ee6633";
+                ctx.fillRect(15, 0, 15, 15);
+                ctx.restore();
+            }
+
+            /*=========================================================== 
+            Enemy 
+            ===========================================================*/
+            function Enemy() {
+                this.r = 20;
+                this.x = this.r + (cw - this.r * 2) * Math.random();
+                this.y = 30;
+                this.health = 3;
+                this.damage = 2;
+                this.rank = globalRank++;
+                this.rendered = true;
+            }
+
+            Enemy.prototype.upData = function() {
+                if (this.health <= 0) {
+
+                }
+            }
+
+            Enemy.prototype.receiveDamage = function(i, val) {
+                this.health -= val;
+                if (this.health <= 0) {
+                    this.render = false;
+                    enemiesHit.splice(i, 1);
+                    enemies.splice(i, 1);
+                    score++;
+                    scoreLabel.innerHTML = 'Score : ' + score;
+                }
+            }
+
+            Enemy.prototype.render = function() {
+                if (this.rendered !== true)
+                    return;
+                this.y += enemySpeed;
+                ctx.beginPath(this.x, this.y);
+                ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
+                ctx.fillStyle = 'rgba(51,153,255,0.6)';
+                //ctx.globalAlpha = 0.2;
+                ctx.fill();
+                ctx.beginPath();
+                ctx.lineWidth = 3;
+                ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
+                ctx.strokeStyle = 'rgba(51,153,255,1)';
+                ctx.stroke();
+            }
+
+            /*============================================================
+            Bullet
+            ============================================================*/
+            function Bullet() {
+                this.x = hero.x;
+                this.y = hero.y;
+                this.size = 13;
+                this.damage = 1;
+            }
+
+            Bullet.prototype.upData = function(i) {
+                /*===========================================================
+                Check Collisions // 碰撞检测
+                ===========================================================*/
+                var ei = enemies.length;
+                while (ei--) {
+                    var enemy = enemies[ei];
+                    if (distance(this.x, this.y - this.size, enemy.x, enemy.y) <= enemy.r) {
+                        if (enemiesHit.indexOf(enemy.rank) == -1) { // 受击敌人数组中无法找到该敌人
+                            enemiesHit.push(enemy.rank);
+                            enemy.receiveDamage(ei, this.damage);
+                        } else {
+                            enemy.receiveDamage(ei, this.damage);
+                        }
+                        bullets.splice(i, 1);
+                    }
+                }
+            }
+
+            Bullet.prototype.render = function(i) {
+                this.y -= bulletSpeed;
+                ctx.beginPath();
+                ctx.moveTo(this.x, this.y);
+                ctx.lineTo(this.x, this.y - this.size);
+                ctx.strokeStyle = '#ffffff';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            }
+
+            function distance(x, y1, x2, y2) {
+                var dx, dy, ds;
+                dx = Math.abs(x2 - x);
+                dy = Math.abs(y2 - y1);
+                ds = Math.sqrt(dx * dx + dy * dy);
+                return ds;
+            }
+
+
+
+            var hero = new Hero();
+            setInterval(function() {
+                bullets.push(new Bullet());
+            }, 200);
+            setInterval(function() {
+                enemies.push(new Enemy());
+
+            }, layTime);
+
+            function move() {
+                if (xDir == -1)
+                    hero.x -= heroSpeed;
+                else if (xDir == 1)
+                    hero.x += heroSpeed;
+                if (yDir == 1)
+                    hero.y -= heroSpeed;
+                else if (yDir == -1)
+                    hero.y += heroSpeed;
+            }
+
+            function heroMove() {
+                if (hero.x <= 30 && dy < 0) {
+                    hero.x = 30;
+                } else if (hero.x >= cw - 30 && dy > 0) {
+                    hero.x = cw - 30;
+                } else {
+                    if (dy < 0)
+                        hero.x -= maxSpeed * (-dy / 90);
+                    else if (dy > 0)
+                        hero.x += maxSpeed * dy / 90;
+                }
+
+            }
+
+            function clearScreen() {
+                ctx.clearRect(0, 0, cw, ch);
+            }
+
+            function gameOver() {
+                if (over !== true)
+                    return;
+                //window.alert("Game Over");
+                window.cancelAnimationFrame(start);
+                // console.log("Game Over");
+                if (window.confirm("Game Over\n" + scoreLabel.innerHTML)) {
+                    welcomePage();
+                };
+                // ctx.fillStyle = 'rgba(255,114,96,1)';
+                // ctx.fillRect(cw / 2 - 150, ch / 2 - 50, 300, 100);
+                // ctx.fillStyle = 'rgba(255,245,195,1)';
+                // ctx.font = '50px Microsoft Yahei';
+                // ctx.textAlign = 'center';
+                // ctx.fillText('Game Over', cw / 2, ch / 2 + 25);
+            }
+
+            var start;
+
+            function renderer() {
+                //layTime <= 500 ? layTime = 500 : layTime -= 4;
+                clearScreen();
+                move();
+                heroMove();
+
+                // Handle upData
+                var i = enemies.length;
+                while (i--) {
+                    enemies[i].upData();
+                }
+                i = bullets.length;
+                while (i--) {
+                    if (bullets[i].y > 0) {
+                        bullets[i].upData(i);
+                    }
+                }
+                hero.upData();
+
+                // Handle render
+                i = enemies.length;
+                while (i--) {
+                    enemies[i].render();
+                }
+                i = bullets.length;
+                while (i--) {
+                    bullets[i].render(i);
+                }
+                hero.render();
+
+                start = window.requestAnimationFrame(renderer);
+                gameOver();
+            }
+            //start = window.requestAnimationFrame(renderer);
+            renderer();
+        }
+    </script> 
+ </body>
+</html>

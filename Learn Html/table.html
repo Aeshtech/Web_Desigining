@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  thead {color:red;}
+  tbody {color:blue;}
+  tfoot {color:green;}
+  table, th, td
+{
+				border: 1px solid black;
+} 
+h2 {color:rgb(255, 8, 222);} 
+ .myDiv {
+  border: 5px outset red;
+  background-color: rgb(21, 196, 255);    
+  text-align: center;
+}
+</style>
+</head>
+<body>
+    <h2>Resume:</h2>
+    <table>
+      <!-- <caption> tag is used to give a caption for the table!  -->
+    <caption>PERSONAL DETAILS OF CANDIDATE</caption>
+    <!-- <thead> is used to group header content of the table...it doesnt do itself..we can apply css to all the head of the table with it. -->
+    <thead>
+      <!-- <tr> specifies table row & <th> specifies table heading -->
+      <tr>
+      <th>Name</th>
+      <th>Qualification</th>
+      <th>Experience</th>
+    </tr>
+    </thead>
+    <tr>
+    <!-- <tbody> is used to group body content of the table...it doesnt do itself..we can apply css to whole body of the table with it. -->
+    <tbody>
+      <!-- <td> specifies table data. -->
+      <td>tushar sharma</td>
+      <td>graduated</td>
+      <td>4years as an consultant</td>
+    </tr>
+    </tbody>
+    <!-- <tfoot> is used to group footer content of the table...it doesnt do itself..we can apply css to all the foot of the table with it. -->
+    <tfoot>
+      <tr>
+      <td>ashish sharma</td>
+      <td>b.tech</td>
+      <td>fresher</td>
+    </tr></tfoot>
+    </table>
+  <h2>Above are the details of Mr. Tushar and Mr. Ashish</h2><br>
+
+  <table>
+    <caption>Table 2:</caption>
+    <tr>
+      <!-- "colspan" attr defines the no of columns a header cell should span. -->
+      <th colspan="2">Monthly Savings</th>
+    </tr>
+    <tr>
+      <td>January</td>
+      <td>$200</td>
+    </tr>
+    <tr>
+      <td>February</td>
+      <td>$198</td>
+    </tr>
+  </table><br><br>
+
+
+  <table>
+    <caption>Table 3:</caption>
+    <thead>
+      <tr>
+        <th colspan="2" id="name">Name</th>
+      </tr>
+      <tr>
+        <!-- "headers" attr specifies one or more header cells a related to a main header cell. -->
+        <th headers="name">Firstname</th>
+        <th headers="name">Last name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Ashish</td>
+        <td>Pandit</td>
+      </tr>
+      <tr>
+        <td>Tushar</td>
+        <td>sharma</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>I have <span style="color:rgb(0, 89, 255);font-weight:bold">Blue</span> BMW</p>
+
+<?PHP 
+echo="hello";
+?>
+</body>
+</html>

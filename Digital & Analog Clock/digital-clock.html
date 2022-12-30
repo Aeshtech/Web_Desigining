@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{
+				background:black;
+				background-size:cover;
+				}
+h1{
+				text-align: center;
+				color:red;
+				text-decoration:underline;
+				}
+h2{
+				position: absolute;
+				background:yellow;
+				text-align: center;
+				top:30%;
+				left:35%;
+				color:Green;
+				}
+</style>
+</head>
+<body>
+
+<h1>Digital clock:</h1>
+
+<h2 id="demo"></h2>
+
+<script>
+var myVar = setInterval(myTimer, 1000);
+
+function myTimer() {
+  var d = new Date();
+  document.getElementById("demo").innerHTML = d.toLocaleTimeString();
+}
+</script>
+
+</body>
+</html>

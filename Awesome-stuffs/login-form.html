@@ -1,0 +1,43 @@
+<!DOCTYPE>
+<html>  
+<head>
+<style>
+.loginform{  
+    padding:10px;  
+    border:1px solid pink;  
+    border-radius:10px;  
+    width:300px;
+    margin-top:10px;
+    margin:auto 
+}  
+.formheading{  
+    background-color:red;  
+    color:white;  
+    padding:4px;  
+    text-align:center;  
+}  
+.sub{  
+background-color:red;  
+padding: 7px 40px 7px 40px;  
+color:white;  
+font-weight:bold;  
+margin-left:70px;  
+border-radius:5px;  
+}  
+</style>
+</head>
+<body>  
+<div class="loginform">  
+<h3 class="formheading">Please Login</h3>  
+<form action="LoginServlet" method="post">  
+<table>  
+<tr><td>Email:</td><td><input type="email" name="email" required/></td></tr>  
+<tr><td>Password:</td><td><input type="password" name="password" required/></td></tr>  
+<tr><td colspan="2" style="text-align:center"><input class="sub" type="submit" value="login"/></td></tr>  
+</table>  
+</form>  
+</div>  
+</body>
+</html>  
+
+ 

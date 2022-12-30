@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Tutorial</title>
+</head>
+<body>
+    <h1 id="demo">Hello Javascript</h1>
+    <button type="button" onclick="myfunc()">Click me</button><br><br>
+    <button type="button" onclick="printhis()">Print Page</button>
+    <script>
+    function myfunc() {
+            document.getElementById("demo").innerHTML="Button Clicked" +" "+ 1;
+        } 
+    // alert("you are welcome to Javascipt....");
+    // alert(15/7);
+    console.log("I am Console")
+    // document.write(12*9) //only for testing purpose.
+    function printhis(){
+        window.print()
+    }
+    var a,b,c;
+    a="100";
+    b=9;
+    c=a+b;
+    console.log(c);
+
+    var txt1 = "what a very";
+    txt1 += "hot day";
+    console.log(txt1,"=",typeof txt1);
+
+    var p=1;
+    p++;       //incrementing var p by 1
+    q= p ** 5;   //exponentiation(power)
+    console.log(q)
+    console.log(Math.pow(2,5)) //Math.pow(x,y) can also be used to exponantitation.
+    console.log((10+40)*5)   //js follow algebra in arithmatic.
+
+    var person,techs,cars;
+    person = {pName:"Ashish",pAge:"19",pheight:"5.9",pcolor:"atrractive"};
+    console.log(person,"type=" + typeof person)
+
+    techs = ["C","Python","HTML","CSS","Bootstrap","JavaScript"]; //js treats array as object means typeof array in js is object.
+    console.log(techs,"type:" + typeof techs)
+
+    cars = ["BMW","Audi", "Mercedes","Discovery",10,22.01,["i","m","subarray",99]];
+    console.log(cars,"type:" + typeof cars)
+
+    var aesh;
+    console.log(typeof aesh)
+
+    //defining function to convert temp in fahrenehit and printing on console.
+    function tocelcius(fahrenheit) 
+     {
+        console.log("Temperature is : " + (5/9 * (fahrenheit - 32)) + "C");
+      }
+    tocelcius(77);
+
+    </script>
+</body>
+</html>

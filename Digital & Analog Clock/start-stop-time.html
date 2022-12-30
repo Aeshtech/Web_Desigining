@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>A script on this page starts this clock:</h1>
+
+<button onclick="startme()">Start time</button>
+<button onclick="clearInterval(myVar)">Stop time</button>
+<h1 id="demo"></h1>
+
+<script>
+function startme(){
+				myVar = setInterval(myTimer, 1000);
+				//here myvar is global so that parameter of clearIntrval method can access it.Bcoz it is define inside another func.
+				
+				function myTimer() {
+  var d = new Date();
+  document.getElementById("demo").innerHTML = d.toLocaleTimeString();
+  }
+  }
+</script>
+
+</body>
+</html>

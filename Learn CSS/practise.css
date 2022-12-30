@@ -1,0 +1,81 @@
+body{
+    background-color:rgb(34, 40, 41);
+}
+
+p{
+    margin-left:10px;
+    margin-right: 10px;
+    color:rgb(255, 255, 255);
+    text-align: justify;
+}
+
+/* Pseudo-element selector */
+
+/* insert text,content,img, just after and before using ::after & ::before selectors repectively */
+p::after{
+    content: "--Remember this";
+    font-weight: bold;
+    color: red;
+    background-color: yellow;
+}
+p.before::before{
+    content: "Read it--";
+    font-weight: bold;
+    color: red;
+    background-color: yellow;
+
+}
+
+/* selects the first letter of an element by using ::first-letter selector */
+
+p.fletter::first-letter{
+    font: italic bold 20px Georgia;
+    color: red;
+}
+
+header{    
+    margin: 0px;
+    border-top-style: inset;
+    border-left-style: inset;
+    border-bottom-style: inset;
+    border-top-color: rgb(255, 0, 106);
+    border-left-color: rgb(255, 0, 106);
+    border-bottom-color:rgb(255, 0, 106);
+    border-left-width: 15px;
+    background-color: rgb(253, 255, 144);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    text-align: center;
+    font-size: 40px;
+    color: red;
+    
+}
+ 
+#back-marquee{
+    background-color: rgb(255, 255, 251);
+}
+
+a{
+    color: red;
+}
+iframe{
+    color: rgb(253, 255, 144);
+}
+
+#img{
+    border-style: solid;
+    border-color: white;
+    background-color:rgb(34, 40, 41);
+    position:absolute;
+    left: 1230px;
+    top: 100px;
+    right: 0;    
+}
+
+
+pre{
+    font-family: Arial;
+    font-style: oblique;
+    font-weight: bolder;
+    color: rgb(255, 255, 255);
+}
